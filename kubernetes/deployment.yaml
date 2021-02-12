@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: udagram-proxy
+  name: udagram-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-proxy
+  template:
+    metadata:
+      labels:
+        app: udagram-proxy
+    spec:
+      containers:
+      - image: mb71/udagram-proxy
+        name: udagram-proxy
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+
+
